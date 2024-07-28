@@ -1,0 +1,9 @@
+run: |
+  git remote set-url origin https://x-access-token:${{ secrets.PARSERS_FOR_CLASH_ACTIONS_TOKEN }}@github.com/${{ github.repository }}
+  if [ -n "$(git status --porcelain)" ]; then
+    git add --all
+    git commit -m "Actions: 从上游同步并修改文件"
+    git push origin main
+  else
+    echo "Actions: 上游没有需要修改的提交"
+shell: bash

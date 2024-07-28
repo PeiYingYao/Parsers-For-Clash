@@ -15,13 +15,13 @@ jobs:
         with:
           fetch-depth: 0 # 确保获取完整的提交历史
 
-      # 步骤2：配置Git
+      # Step 2: Configure Git
       - name: Configure Git
         run: |
           git config user.name 'GitHub Action'
           git config user.email 'action@github.com'
 
-      # 步骤3：下载并重命名特定文件
+      # Step 3: Download and Rename Specific Files
       - name: Download and Rename Specific Files
         run: |
           mkdir -p rule-set
@@ -36,7 +36,7 @@ jobs:
           curl -o rule-set/StreamingSE.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/StreamingSE.list"
           curl -o rule-set/Global.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/Global.list"
 
-      # 步骤4：修改rule-set目录中的.txt文件
+      # Step 4: Modify .txt files in rule-set directory
       - name: Modify .txt Files in Rule-Set Directory
         run: |
           find rule-set -type f -name "*.txt" -exec sed -i '/IP-ASN/d' {} \;
@@ -45,16 +45,16 @@ jobs:
           find rule-set -type f -name "*.txt" -exec sed -i '/USER-AGENT/d' {} \;
           find rule-set -type f -name "*.txt" -exec sed -i '/GEOIP/d' {} \;
 
-      # 步骤5：检查是否有更改并提交
+      # Step 5: Check for changes and commit if any
       - name: Commit and Push Changes
         env:
           PARSERS_FOR_CLASH_ACTIONS_TOKEN: ${{ secrets.PARSERS_FOR_CLASH_ACTIONS_TOKEN }}
         run: |
-          git remote set-url origin https://x-access-token:${PARSERS_FOR_CLASH_ACTIONS_TOKEN}@github.com/${{ github.repository }}
+          git remote set-url origin https://x-access-token:${{ secrets.PARSERS_FOR_CLASH_ACTIONS_TOKEN }}@github.com/${{ github.repository }}
           if [ -n "$(git status --porcelain)" ]; then
             git add --all
             git commit -m "Actions: 从上游同步并修改文件"
             git push origin main
           else
             echo "Actions: 上游没有需要修改的提交"
-          fi
+          shell: bash
