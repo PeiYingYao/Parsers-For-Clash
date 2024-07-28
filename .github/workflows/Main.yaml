@@ -40,6 +40,7 @@ jobs:
           curl -o rule-set/Developer.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/Developer/Developer.yaml"
           curl -o rule-set/FUCK-GFW.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
           curl -o rule-set/TLD-NOT-CN.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+          curl -o rule-set/ForceDirectPrivateNetwork.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
 
       # 步骤4：修改rule-set目录中的.txt文件
       - name: Modify .txt Files in Rule-Set Directory
@@ -51,6 +52,7 @@ jobs:
           find rule-set -type f -name "*.txt" -exec sed -i '/GEOIP/d' {} \;
           sed -i 's/+\././g' rule-set/FUCK-GFW.txt
           sed -i 's/+\././g' rule-set/TLD-NOT-CN.txt
+          sed -i 's/+\././g' rule-set/ForceDirectPrivateNetwork.txt
 
       # 步骤5：检查是否有更改并提交
       - name: Commit and Push Changes
