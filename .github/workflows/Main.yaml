@@ -8,21 +8,20 @@ on:
 jobs:
   sync-and-modify:
     runs-on: ubuntu-24.04
-    permissions:
-      contents: write
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           fetch-depth: 0 # 确保获取完整的提交历史
 
-      # Step 2: Configure Git
+      # 步骤2：配置Git
       - name: Configure Git
         run: |
           git config user.name 'GitHub Action'
           git config user.email 'action@github.com'
 
-      # Step 3: Download and Rename Specific Files
+      # 步骤3：下载并重命名特定文件
       - name: Download and Rename Specific Files
         run: |
           mkdir -p rule-set
@@ -37,7 +36,7 @@ jobs:
           curl -o rule-set/StreamingSE.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/StreamingSE.list"
           curl -o rule-set/Global.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/Global.list"
 
-      # Step 4: Modify .txt files in rule-set directory
+      # 步骤4：修改rule-set目录中的.txt文件
       - name: Modify .txt Files in Rule-Set Directory
         run: |
           find rule-set -type f -name "*.txt" -exec sed -i '/IP-ASN/d' {} \;
@@ -46,7 +45,7 @@ jobs:
           find rule-set -type f -name "*.txt" -exec sed -i '/USER-AGENT/d' {} \;
           find rule-set -type f -name "*.txt" -exec sed -i '/GEOIP/d' {} \;
 
-      # Step 5: Check for changes and commit if any
+      # 步骤5：检查是否有更改并提交
       - name: Commit and Push Changes
         env:
           PARSERS_FOR_CLASH_ACTIONS_TOKEN: ${{ secrets.PARSERS_FOR_CLASH_ACTIONS_TOKEN }}
