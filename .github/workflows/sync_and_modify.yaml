@@ -57,4 +57,4 @@ jobs:
             git push origin main
           else
             echo "Actions: 上游没有需要修改的提交"
-          shell: bash
+          fi
