@@ -38,6 +38,7 @@ jobs:
           curl -o rule-set/Global.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/Global.list"
           curl -o rule-set/OpenAI.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/OpenAI/OpenAI.yaml"
           curl -o rule-set/Developer.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@release/rule/Clash/Developer/Developer.yaml"
+          curl -o rule-set/FUCK-GFW.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
 
       # 步骤4：修改rule-set目录中的.txt文件
       - name: Modify .txt Files in Rule-Set Directory
@@ -47,6 +48,7 @@ jobs:
           find rule-set -type f -name "*.txt" -exec sed -i '/URL-REGEX/d' {} \;
           find rule-set -type f -name "*.txt" -exec sed -i '/USER-AGENT/d' {} \;
           find rule-set -type f -name "*.txt" -exec sed -i '/GEOIP/d' {} \;
+          sed -i 's/+\././g' rule-set/FUCK-GFW.txt
 
       # 步骤5：检查是否有更改并提交
       - name: Commit and Push Changes
