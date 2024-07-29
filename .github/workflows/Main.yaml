@@ -35,13 +35,13 @@ jobs:
           curl -o rule-set/Netease.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/media/netease.list"
           curl -o rule-set/Streaming.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/Streaming.list"
           curl -o rule-set/StreamingSE.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/StreamingSE.list"
-          curl -o rule-set/Global.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/Global.list"
-          curl -o rule-set/OpenAI.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI.yaml"
-          curl -o rule-set/Developer.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Developer/Developer.yaml"
-          curl -o rule-set/Fuck-GFW.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/gfw.txt"
+          curl -o rule-set/Fuck-GFW.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Global/Global_Classical_No_Resolve.yaml"
           curl -o rule-set/TLD-Not-CN.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
           curl -o rule-set/ForceDirectPrivateNetwork.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/private.txt"
-
+          curl -o rule-set/OpenAI.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI_No_Resolve.yaml"
+          curl -o rule-set/Developer.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Developer/Developer_No_Resolve.yaml"
+          curl -o rule-set/Npmjs.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Npmjs/Npmjs_No_Resolve.yaml"
+          curl -o rule-set/EHGallery.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/EHGallery/EHGallery_No_Resolve.yaml"
       # 步骤4：修改rule-set目录中的.txt文件
       - name: Modify .txt Files in Rule-Set Directory
         run: |

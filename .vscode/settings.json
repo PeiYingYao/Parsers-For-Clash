@@ -1,0 +1,11 @@
+{
+  "files.exclude": {
+    "**/rule-set": true
+  },
+  "search.exclude": {
+    "#files.exclude#": true
+  },
+  "files.watcherExclude": {
+    "#files.exclude#": true
+  }
+}
