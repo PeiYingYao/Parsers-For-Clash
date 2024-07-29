@@ -1,2 +1,2 @@
 # 拒绝日本IP的AV网站
-DOMAIN-SUFFIX,missav.com
+.missav.com
