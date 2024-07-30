@@ -26,7 +26,8 @@ jobs:
       - name: Download and Rename Specific Files
         run: |
           mkdir -p rule-set
-          curl -o rule-set/TLD-Not-CN.yaml "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+          curl -o rule-set/TLD_Not_CN.yaml "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+          curl -o rule-set/ForceDirectAPP.yaml "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/applications.txt"
 
       # 步骤4：修改rule-set目录中的.txt文件
       - name: Modify .txt Files in Rule-Set Directory
