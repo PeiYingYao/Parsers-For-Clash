@@ -1,0 +1,3 @@
+# 拒绝日本IP的AV网站
+payload:
+  - '.missav.com'

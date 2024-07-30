@@ -26,13 +26,13 @@ jobs:
       - name: Download and Rename Specific Files
         run: |
           mkdir -p rule-set
-          curl -o rule-set/TLD-Not-CN.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
+          curl -o rule-set/TLD-Not-CN.yaml "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
 
       # 步骤4：修改rule-set目录中的.txt文件
       - name: Modify .txt Files in Rule-Set Directory
         # find rule-set -type f \( -name "Telegram.yaml" -o -name "OpenAI.yaml" \) -exec sed -i '/IP-ASN/d' {} +
         run: |
-          sed -i 's/+\././g' rule-set/TLD-Not-CN.txt
+          sed -i 's/+\././g' rule-set/TLD-Not-CN.yaml
 
       # 步骤5：检查是否有更改并提交
       - name: Commit and Push Changes
