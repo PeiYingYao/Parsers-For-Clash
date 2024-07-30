@@ -33,7 +33,7 @@ jobs:
       - name: Modify .txt Files in Rule-Set Directory
         # find rule-set -type f \( -name "Telegram.yaml" -o -name "OpenAI.yaml" \) -exec sed -i '/IP-ASN/d' {} +
         run: |
-          sed -i 's/+\././g' rule-set/TLD-Not-CN.yaml
+          sed -i 's/+\././g' rule-set/TLD_Not_CN.yaml
 
       # 步骤5：检查是否有更改并提交
       - name: Commit and Push Changes
