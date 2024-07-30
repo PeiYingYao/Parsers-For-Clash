@@ -26,28 +26,12 @@ jobs:
       - name: Download and Rename Specific Files
         run: |
           mkdir -p rule-set
-          curl -o rule-set/MicroSoft.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/microsoft.list"
-          curl -o rule-set/Netease.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/media/netease.list"
-          curl -o rule-set/Streaming.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/Streaming.list"
-          curl -o rule-set/StreamingSE.txt "https://cdn.jsdelivr.net/gh/SleepyHeeead/subconverter-config@master/ruleset/external/DivineEngine/Surge/StreamingSE.list"
           curl -o rule-set/TLD-Not-CN.txt "https://cdn.jsdelivr.net/gh/Loyalsoldier/clash-rules@release/tld-not-cn.txt"
-          curl -o rule-set/OpenAI.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/OpenAI/OpenAI_No_Resolve.yaml"
-          curl -o rule-set/Developer.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Developer/Developer_No_Resolve.yaml"
-          curl -o rule-set/Npmjs.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Npmjs/Npmjs_No_Resolve.yaml"
-          curl -o rule-set/EHGallery.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/EHGallery/EHGallery_No_Resolve.yaml"
-          curl -o rule-set/FuckGFW.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Global/Global_Classical_No_Resolve.yaml"
-          curl -o rule-set/Hijacking.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Hijacking/Hijacking_No_Resolve.yaml"
-          curl -o rule-set/Lan.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Lan/Lan_No_Resolve.yaml"
-          curl -o rule-set/Apple.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Apple/Apple_Classical_No_Resolve.yaml"
-          curl -o rule-set/Telegram.txt "https://cdn.jsdelivr.net/gh/blackmatrix7/ios_rule_script@master/rule/Clash/Telegram/Telegram_No_Resolve.yaml"
+
       # 步骤4：修改rule-set目录中的.txt文件
       - name: Modify .txt Files in Rule-Set Directory
+        # find rule-set -type f \( -name "Telegram.yaml" -o -name "OpenAI.yaml" \) -exec sed -i '/IP-ASN/d' {} +
         run: |
-          find rule-set -type f -name "*.txt" -exec sed -i '/IP-ASN/d' {} \;
-          find rule-set -type f -name "*.txt" -exec sed -i '/PROCESS-NAME/d' {} \;
-          find rule-set -type f -name "*.txt" -exec sed -i '/URL-REGEX/d' {} \;
-          find rule-set -type f -name "*.txt" -exec sed -i '/USER-AGENT/d' {} \;
-          find rule-set -type f -name "*.txt" -exec sed -i '/GEOIP/d' {} \;
           sed -i 's/+\././g' rule-set/TLD-Not-CN.txt
 
       # 步骤5：检查是否有更改并提交
